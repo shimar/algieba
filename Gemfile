@@ -43,3 +43,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use rspec and simplecov
+gem 'rspec-rails', group: [:developemnet, :test]
+gem 'simplecov', group: [:developemnet, :test]
+
