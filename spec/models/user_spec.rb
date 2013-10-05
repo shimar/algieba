@@ -17,11 +17,11 @@ describe User do
       end
     end
 
-    describe :password_digest do
+    describe :password do
       it "requires password_digest." do
         @user.email = 'email@test.com'
         @user.valid?.should == false
-        @user.errors.include?(:password_digest).should == true
+        @user.errors.include?(:password).should == true
       end
 
       it "validates that password_digest must be same to password_confirmation." do
@@ -51,6 +51,10 @@ describe User do
 
     it "has an attribute for password_confirmation." do
       @user.respond_to?(:password_confirmation).should == true
+    end
+
+    it "has authenticate method." do
+      @user.respond_to?(:authenticate).should == true
     end
 
   end
