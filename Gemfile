@@ -44,7 +44,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# Use rspec and simplecov
-gem 'rspec-rails', group: [:developemnet, :test]
-gem 'simplecov', group: [:developemnet, :test]
-
+# Use rspec, guard, spring and simplecov
+group :developement, :test do
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'simplecov'
+  gem 'spring'
+end
