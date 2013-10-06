@@ -15,4 +15,44 @@ describe SessionsController do
     end
   end
 
+  describe :create do
+    it "assigns given parameters to @form."
+    context "when @form valid," do
+      context "and user has given email not found," do
+        it "sets error message to flash[:error] and renders :new." do
+          FactoryGirl.create(:user)
+          post :create, signin_form: { email: 'notfound@test.com', password: 'password'}
+          flash[:error].should == 'incorrect email or password.'
+          expect(response).to render_template(:new)
+        end
+      end
+      context "and user has given email found," do
+        before(:each) do
+          @expected = FactoryGirl.create(:user)
+        end
+
+        it "assigns the user to @user." do
+          post :create, signin_form: { email: 'test@test.com', password: 'password'}
+          assigns(:user).should == @expected
+        end
+
+        it "redirects to xxxxx if user authenticated."
+
+        it "sets error message to flash[:error] and renders :new if user not authenticated." do
+          post :create, signin_form: { email: 'test@test.com', password: 'not matched'}
+          flash[:error].should == 'incorrect email or password.'
+          expect(response).to render_template(:new)
+        end
+
+      end
+    end
+
+    context "when @form invalid," do
+      it "renders :new." do
+        post :create, signin_form: { email: '', password: ''}
+        expect(response).to render_template(:new)
+      end
+    end
+  end
+
 end
