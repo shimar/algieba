@@ -7,11 +7,7 @@
 </head>
 <body>
   <div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="navbar-header">
-        <%= link_to('Algieba', root_url, class: 'navbar-brand') %>
-      </div>
-    </nav>
+    <%= render 'shared/header' %>
     <%= yield %>
   </div>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
