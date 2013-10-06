@@ -39,6 +39,8 @@ gem 'anjlab-bootstrap-rails',
 :require => 'bootstrap-rails',
 :github => 'anjlab/bootstrap-rails'
 
+gem 'simple_form'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
