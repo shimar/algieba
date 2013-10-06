@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       if @user && @user.authenticate(@form.password)
         # TODO - redirect to users' top page.
       else
-        flash[:error] = 'incorrect email or password.'
+        flash.now[:error] = 'incorrect email or password.'
         render :new
       end
     else
