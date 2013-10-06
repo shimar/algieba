@@ -1,0 +1,17 @@
+$footer_height: 60px;
+$wrap_margin: 0 auto -60px;
+
+html,
+body { height: 100%; }
+
+#wrap { min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        margin: $wrap_margin; }
+
+#push { height: $footer_height; }
+#footer { height: $footer_height;
+          background-color: #000;
+          color: #fff;
+          padding: 10px 0 0 0;
+          .copyright { text-align: right; }}
