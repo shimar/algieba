@@ -26,4 +26,20 @@ describe SigninForm do
 
   end
 
+  describe :find_user do
+
+    it "returns an User object which has same email to self." do
+      expected = FactoryGirl.create(:user)
+      @model = SigninForm.new({email: 'test@test.com'})
+      user = @model.find_user
+      user.should == expected
+    end
+
+    it "returns nil if the no user has the email address." do
+      @model = SigninForm.new({email: 'notfound@test.com'})
+      @model.find_user.should == nil
+    end
+
+  end
+
 end

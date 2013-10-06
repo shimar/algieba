@@ -9,4 +9,8 @@ class SigninForm
   validates :password,
   presence: true
 
+  def find_user
+    user = User.find_by_email(email)
+  end
+
 end
