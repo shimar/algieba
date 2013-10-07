@@ -2,6 +2,17 @@ require 'spec_helper'
 
 describe User do
 
+  describe :associations do
+    before(:each) do
+      @user = User.new
+    end
+
+    it "has many of softwares" do
+      @user.respond_to?(:softwares).should == true
+    end
+
+  end
+
   describe :validations do
 
     before(:each) do
