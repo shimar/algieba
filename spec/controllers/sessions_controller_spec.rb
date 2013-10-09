@@ -3,6 +3,11 @@ require 'spec_helper'
 describe SessionsController do
 
   describe :new do
+    it "redirects to user_softwares_url with session[:user_id] if authenticated." do
+      get :new, {}, { user_id: 1 }
+      expect(response).to redirect_to user_softwares_url(user_id: 1)
+    end
+
     it "assigns new instance of SigninForm to @form." do
       get :new
       assigns(:form).should be_an_instance_of SigninForm
