@@ -26,10 +26,29 @@ describe User do
         @user.valid?.should == false
         @user.errors.include?(:email).should == true
       end
+
+      it "should be unique." do
+        FactoryGirl.create :user
+        @user.email = 'test@test.com'
+        @user.email_confirmation = 'test@test.com'
+        @user.password = 'password'
+        @user.password_confirmation = 'password'
+        @user.valid?.should == false
+        @user.errors.include?(:email).should == true
+      end
+
+      it "should be matched to email_confirmation." do
+        @user.email = 'test@test.com'
+        @user.email_confirmation = 'not_matched@test.com'
+        @user.password = 'password'
+        @user.password_confirmation = 'password'
+        @user.valid?.should == false
+        @user.errors.include?(:email_confirmation).should == true
+      end
     end
 
     describe :password do
-      it "requires password_digest." do
+      it "requires password." do
         @user.email = 'email@test.com'
         @user.valid?.should == false
         @user.errors.include?(:password).should == true

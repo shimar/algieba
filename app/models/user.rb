@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   has_many :softwares
 
   validates :email,
-  presence: true
+  presence: true,
+  uniqueness: true,
+  confirmation: true
 
   validates :password,
   presence: true,
