@@ -41,7 +41,10 @@ describe SessionsController do
           assigns(:user).should == @expected
         end
 
-        it "redirects to xxxxx if user authenticated."
+        it "redirects to root_url if user authenticated." do
+          post :create, signin_form: { email: 'test@test.com', password: 'password'}
+          expect(response).to redirect_to root_url
+        end
 
         it "sets error message to flash[:error] and renders :new if user not authenticated." do
           post :create, signin_form: { email: 'test@test.com', password: 'not matched'}
@@ -58,6 +61,21 @@ describe SessionsController do
         expect(response).to render_template(:new)
       end
     end
+  end
+
+  describe :destroy do
+
+    it "deletes the :user_id from sessons." do
+      session[:user_id] = 1
+      delete :destroy
+      session.has_key?(:user_id).should == false
+    end
+
+    it "redirects to welcome_url." do
+      delete :destroy
+      expect(response).to redirect_to welcome_url
+    end
+
   end
 
 end

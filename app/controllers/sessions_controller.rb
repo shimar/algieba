@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       @user = @form.find_user
       if @user && @user.authenticate(@form.password)
         session[:user_id] = @user.id
-        # TODO - redirect to users' top page.
+        redirect_to root_url
       else
         flash.now[:error] = 'incorrect email or password.'
         render :new
@@ -28,6 +28,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.delete :user_id
+    redirect_to welcome_url
   end
 
   private
