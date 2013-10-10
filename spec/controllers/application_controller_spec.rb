@@ -30,4 +30,18 @@ describe ApplicationController do
 
   end
 
+  describe :current_user do
+
+    it "returns nil if user not authenticated." do
+      @controller.send(:current_user).should == nil
+    end
+
+    it "returns a instance of User if user authenticated." do
+      user = FactoryGirl.create(:user)
+      session[:user_id] = 1
+      @controller.send(:current_user).should == user
+    end
+
+  end
+
 end

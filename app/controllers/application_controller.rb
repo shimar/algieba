@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :auth_filter
 
+  helper_method :current_user
+
   protected
 
   def auth_filter
@@ -13,6 +15,10 @@ class ApplicationController < ActionController::Base
 
   def authenticated?
     !session[:user_id].nil?
+  end
+
+  def current_user
+    @user = User.find(session[:user_id]) if authenticated?
   end
 
 end
