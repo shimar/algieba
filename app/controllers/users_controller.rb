@@ -2,6 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :auth_filter, only: [:new, :create]
 
+  # GET /
+  def top
+    @user = current_user
+    @softwares = @user.softwares
+  end
+
   # GET /users
   # GET /users.json
   def index

@@ -2,6 +2,42 @@ require 'spec_helper'
 
 describe UsersController do
 
+  describe :top do
+    context "when user not authenticated," do
+      it "redirects to welcome_url." do
+        get :top
+        expect(response).to redirect_to welcome_url
+      end
+    end
+
+    context "when user authenticated," do
+
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+      end
+
+      it "assigns the instance of authenticated user to @user." do
+        session[:user_id] = @user.id
+        get :top
+        assigns(:user).should == @user
+      end
+
+      it "assings the objects of Software owned by @user." do
+        session[:user_id] = @user.id
+        get :top
+        assigns(:softwares).should == @user.softwares
+      end
+
+      it "renders :top." do
+        session[:user_id] = @user.id
+        get :top
+        expect(response).to render_template :top
+      end
+
+    end
+
+  end
+
   describe :index do
   end
 
