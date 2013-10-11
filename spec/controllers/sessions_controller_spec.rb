@@ -22,6 +22,7 @@ describe SessionsController do
 
   describe :create do
     it "assigns given parameters to @form."
+
     context "when @form valid," do
       context "and user has given email not found," do
         it "sets error message to flash[:error] and renders :new." do
