@@ -1,6 +1,6 @@
 Algieba::Application.routes.draw do
 
-  root    'sessions#new'
+  root    'users#top'
   get     'welcome' => 'sessions#new'
   post    'signin'  => 'sessions#create'
   delete  'signout' => 'sessions#destroy'
