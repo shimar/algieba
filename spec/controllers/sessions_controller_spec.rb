@@ -21,7 +21,13 @@ describe SessionsController do
   end
 
   describe :create do
-    it "assigns given parameters to @form."
+
+    it "assigns given parameters to @form." do
+      post :create, signin_form: { email: 'test@test.com', password: 'password' }
+      assigns(:form).should be_an_instance_of SigninForm
+      assigns(:form).email.should == 'test@test.com'
+      assigns(:form).password.should == 'password'
+    end
 
     context "when @form valid," do
       context "and user has given email not found," do
