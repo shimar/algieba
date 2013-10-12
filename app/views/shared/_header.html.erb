@@ -2,4 +2,15 @@
   <div class="navbar-header">
     <%= link_to('Algieba', root_url, class: 'navbar-brand') %>
   </div>
+  <% if current_user.present? %>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li>
+          <%= link_to signout_url, method: :delete do %>
+            <span class="glyphicon glyphicon-off"></span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
 </nav>
