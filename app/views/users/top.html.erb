@@ -7,11 +7,16 @@
           <div class="alert alert-info">
             You have no softwares.
           </div>
+        <% else %>
+          <% @softwares.each do |software| %>
+            <%= render(partial: 'softwares/software', locals: { software: software}) %>
+          <% end %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
 <div class="row">
   <div id="software-creation-link-block" class="col-md-12">
     <%= link_to new_software_url, class: 'btn btn-primary btn-lg' do %>
