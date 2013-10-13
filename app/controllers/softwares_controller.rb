@@ -14,7 +14,7 @@ class SoftwaresController < ApplicationController
 
   # GET /softwares/new
   def new
-    @software = Software.new
+    @software = current_user.softwares.build
   end
 
   # GET /softwares/1/edit
@@ -24,15 +24,14 @@ class SoftwaresController < ApplicationController
   # POST /softwares
   # POST /softwares.json
   def create
-    @software = Software.new(software_params)
+    @user = current_user
+    @software = @user.softwares.build(software_params)
 
     respond_to do |format|
       if @software.save
-        format.html { redirect_to @software, notice: 'Software was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @software }
+        format.html { redirect_to root_url, notice: 'Software was successfully created.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @software.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +68,6 @@ class SoftwaresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def software_params
-      params.require(:software).permit(:user_id, :name, :description)
+      params.require(:software).permit(:name, :description)
     end
 end
