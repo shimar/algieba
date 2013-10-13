@@ -1,0 +1,2 @@
+class ELF < DataFunction
+end

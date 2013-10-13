@@ -13,6 +13,19 @@ describe Software do
         @software.respond_to?(:data_functions).should == true
       end
     end
+
+    describe :ilfs do
+      it "has many of ilfs." do
+        @software.respond_to?(:ilfs).should == true
+      end
+    end
+
+    describe :elfs do
+      it "has many of elfs." do
+        @software.respond_to?(:elfs).should == true
+      end
+    end
+
   end
 
   describe :validations do
