@@ -1,4 +1,5 @@
 class SoftwaresController < ApplicationController
+  before_action :set_user,     only: [:show, :edit, :update, :destroy]
   before_action :set_software, only: [:show, :edit, :update, :destroy]
 
   # GET /softwares
@@ -61,13 +62,19 @@ class SoftwaresController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_software
-      @software = Software.find(params[:id])
-    end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(current_user)
+  end
+
+  def set_software
+    @software = @user.softwares.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def software_params
-      params.require(:software).permit(:name, :description)
-    end
+  def software_params
+    params.require(:software).permit(:name, :description)
+  end
+
 end

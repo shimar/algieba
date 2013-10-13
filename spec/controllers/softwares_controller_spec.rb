@@ -37,6 +37,43 @@ describe SoftwaresController do
   end
 
   describe :edit do
+
+    context 'when user not signed in,' do
+      it "redirects to welcome url." do
+        get :edit, { id: 1 }
+        expect(response).to redirect_to welcome_url
+      end
+    end
+
+    context 'when user signed in,' do
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+      end
+
+      context 'and the user found,' do
+
+        context 'and the software found,' do
+
+          before(:each) do
+            @software = FactoryGirl.create(:software)
+          end
+
+          it "assigns the signed user to @user." do
+            get :edit, { user_id: '1', id: '1' }, { user_id: '1' }
+            assigns(:user).should == @user
+          end
+
+          it "assigns the software has given id to @software." do
+            get :edit, { user_id: '1', id: '1' }, { user_id: '1' }
+            assigns(:software).should == @software
+          end
+
+        end
+
+        context 'and the software not found,'
+      end
+    end
+
   end
 
   describe :create do
