@@ -2,6 +2,19 @@ require 'spec_helper'
 
 describe Software do
 
+  describe :associations do
+
+    before(:each) do
+      @software = Software.new
+    end
+
+    describe :data_functions do
+      it "has many of data_functions." do
+        @software.respond_to?(:data_functions).should == true
+      end
+    end
+  end
+
   describe :validations do
 
     before(:each) do

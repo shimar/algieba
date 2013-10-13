@@ -1,5 +1,9 @@
 class Software < ActiveRecord::Base
 
+  # associations.
+  has_many :data_functions
+
+  # validations.
   validates :user_id,
   presence: true
 
