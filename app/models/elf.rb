@@ -1,2 +1,2 @@
-class ELF < DataFunction
+class Elf < DataFunction
 end
