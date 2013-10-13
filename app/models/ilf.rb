@@ -1,2 +1,2 @@
-class ILF < DataFunction
+class Ilf < DataFunction
 end
