@@ -1,5 +1,14 @@
 require 'spec_helper'
 
 describe DataFunction do
-  pending 'not implemented yet.'
+
+  describe :associations do
+    before(:each) do
+      @model = DataFunction.new
+    end
+    it "belongs to a software." do
+      @model.respond_to?(:software).should == true
+    end
+  end
+
 end
