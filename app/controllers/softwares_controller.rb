@@ -1,6 +1,7 @@
 class SoftwaresController < ApplicationController
   before_action :set_user,     only: [:show, :edit, :update, :destroy]
   before_action :set_software, only: [:show, :edit, :update, :destroy]
+  before_action :set_data_functions, only: [:show]
 
   # GET /softwares
   # GET /softwares.json
@@ -69,7 +70,11 @@ class SoftwaresController < ApplicationController
   end
 
   def set_software
-    @software = @user.softwares.find(params[:id])
+    @software = @user.softwares.includes(:ilfs, :elfs).find(params[:id])
+  end
+
+  def set_data_functions
+    @data_functions = @software.data_functions
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
