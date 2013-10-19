@@ -1,3 +1,21 @@
 // Place all the styles related to the softwares controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.data-function-form {
+  padding: 6px 0;
+  .form-group { margin-left: 0;
+                margin-right: 0; }
+  .data-function-name {
+    width: 200px;
+    .form-control { width: 200px; }
+  }
+  .data-function-type { max-width: 200px; }
+  .data-function-det,
+  .data-function-ret {
+    width: 108px;
+    .form-control { width: 100px;
+                    text-align: right; }
+  }
+  .data-function-remove { margin-left: 10px; }
+}
