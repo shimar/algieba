@@ -17,7 +17,7 @@ class Software < ActiveRecord::Base
   has_many :ilfs
   has_many :elfs
 
-  accepts_nested_attributes_for :data_functions
+  accepts_nested_attributes_for :data_functions, allow_destroy: true
 
   # validations.
   validates :user_id,
