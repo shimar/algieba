@@ -13,6 +13,23 @@
     <%= f.input :description, required: true %>
   </div>
 
+  <div class="form-inline">
+    <h4>Data Functions</h4>
+    <% @software.data_functions.each do |df| %>
+      <%= f.simple_fields_for(:data_functions, df) do |f| %>
+        <%= render('data_function_fields', f: f) %>
+      <% end %>
+    <% end %>
+    <%= link_to_add_fields('Add Data Function', f, :data_functions) %>
+  </div>
+
+  <div class="form-group">
+    <h4>Transactional Functions</h4>
+    <%= button_tag(type: 'button', class: 'btn btn-default') do %>
+      <span class="glyphicon glyphicon-plus"></span>
+    <% end %>
+  </div>
+
   <div class="form-group actions">
     <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
       <%= submit_caption @software %>
