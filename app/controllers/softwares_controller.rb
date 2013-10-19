@@ -1,7 +1,7 @@
 class SoftwaresController < ApplicationController
   before_action :set_user,     only: [:show, :edit, :update, :destroy]
   before_action :set_software, only: [:show, :edit, :update, :destroy]
-  before_action :set_data_functions, only: [:show]
+  before_action :set_data_functions, only: [:show, :edit]
 
   # GET /softwares
   # GET /softwares.json
@@ -28,7 +28,7 @@ class SoftwaresController < ApplicationController
   def create
     @user = current_user
     @software = @user.softwares.build(software_params)
-
+    logger.debug(@software.data_functions.size)
     respond_to do |format|
       if @software.save
         format.html { redirect_to root_url, notice: 'Software was successfully created.' }
@@ -46,6 +46,7 @@ class SoftwaresController < ApplicationController
         format.html { redirect_to @software, notice: 'Software was successfully updated.' }
         format.json { head :no_content }
       else
+        logger.error(@software.errors.keys)
         format.html { render action: 'edit' }
         format.json { render json: @software.errors, status: :unprocessable_entity }
       end
@@ -79,7 +80,8 @@ class SoftwaresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def software_params
-    params.require(:software).permit(:name, :description)
+    params.require(:software)
+      .permit(:name, :description, data_functions_attributes: [:id, :user_id, :name, :type, :det, :ret, :_destroy])
   end
 
 end
