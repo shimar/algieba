@@ -19,7 +19,6 @@ class DataFunction < ActiveRecord::Base
   # associations.
   belongs_to :software
 
-
   # validations.
   validates :user_id,
   presence: true
