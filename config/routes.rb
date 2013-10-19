@@ -8,7 +8,9 @@ Algieba::Application.routes.draw do
   resources :users do
     resources :softwares
   end
-  resources :softwares
+  resources :softwares do
+    resources :data_functions
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
