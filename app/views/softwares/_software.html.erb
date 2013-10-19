@@ -1,9 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading clearfix">
     <div class="pull-left">
-      <h3 class="panel-title">
-        <%= software.name %>
-      </h3>
+      <%= link_to software do %>
+        <h3 class="panel-title">
+          <%= software.name %>
+        </h3>
+      <% end %>
     </div>
     <div class="pull-right">
       <%= link_to edit_software_url software do %>
