@@ -10,16 +10,7 @@
         <p>
           <%= @software.description %>
         </p>
-        <div class="clearfix">
-          <div class="pull-left">
-            <h4>Data functions</h4>
-          </div>
-          <div class="pull-right">
-            <%= link_to(new_software_data_function_url(@software), class: 'btn btn-primary', remote: true) do %>
-              <span class="glyphicon glyphicon-plus"></span>
-            <% end %>
-          </div>
-        </div>
+        <h4>Data functions</h4>
         <p>
           <%= render :partial => "data_functions_table" %>
         </p>
