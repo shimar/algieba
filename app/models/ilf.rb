@@ -15,4 +15,15 @@
 #
 
 class Ilf < DataFunction
+
+  @@function_points = {
+    low:     7,
+    average: 10,
+    high:    15
+  }.freeze
+
+  def function_point
+    @@function_points[complexity]
+  end
+
 end
