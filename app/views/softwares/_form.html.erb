@@ -20,10 +20,12 @@
         <%= render('data_function_fields', f: f) %>
       <% end %>
     <% end %>
-    <%= link_to_add_fields('Add Data Function', f, :data_functions) %>
+    <div clas="form-group actions">
+      <%= link_to_add_fields('Add Data Function', f, :data_functions) %>
+    </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-inline">
     <h4>Transactional Functions</h4>
     <%= button_tag(type: 'button', class: 'btn btn-default') do %>
       <span class="glyphicon glyphicon-plus"></span>
