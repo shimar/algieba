@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015131857) do
+ActiveRecord::Schema.define(version: 20131020141412) do
 
   create_table "data_functions", force: true do |t|
     t.integer  "user_id"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20131015131857) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transactional_functions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "software_id"
+    t.string   "name"
+    t.string   "type"
+    t.integer  "det"
+    t.integer  "ftr"
+    t.integer  "lock_version"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
