@@ -15,4 +15,15 @@
 #
 
 class Elf < DataFunction
+
+  @@function_points = {
+    low:      5,
+    average:  7,
+    high:    10
+  }.freeze
+
+  def function_point
+    @@function_points[complexity]
+  end
+
 end
