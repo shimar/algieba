@@ -41,4 +41,22 @@ class DataFunction < ActiveRecord::Base
   numericality: { only_integer: true,
     greater_than_or_equal_to: 0 }
 
+  def complexity
+    complexity = :low
+    if det < 20
+      complexity = :average if ret > 5
+    elsif det < 51
+      if ret < 2
+        complexity = :low
+      elsif 2 <= ret && ret <= 5
+        complexity = :average
+      elsif ret > 5
+        complexity = :high
+      end
+    else
+      complexity = (ret < 2) ? :average : :high
+    end
+    complexity
+  end
+
 end
