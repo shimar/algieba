@@ -38,6 +38,12 @@ describe Software do
       end
     end
 
+    describe :transactional_functions do
+      it "has many of transactional_functions." do
+        @software.respond_to?(:transactional_functions).should == true
+      end
+    end
+
   end
 
   describe :validations do

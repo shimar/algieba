@@ -15,4 +15,8 @@
 #
 
 class TransactionalFunction < ActiveRecord::Base
+
+  # associations.
+  belongs_to :software
+
 end
