@@ -81,7 +81,26 @@ class SoftwaresController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
   def software_params
     params.require(:software)
-      .permit(:name, :description, data_functions_attributes: [:id, :user_id, :name, :type, :det, :ret, :_destroy])
+      .permit(:name,
+              :description,
+              data_functions_attributes: [
+                :id,
+                :user_id,
+                :name,
+                :type,
+                :det,
+                :ret,
+                :_destroy
+              ],
+              transactional_functions_attributes: [
+                :id,
+                :user_id,
+                :name,
+                :type,
+                :det,
+                :ftr,
+                :_destroy
+              ])
   end
 
 end
