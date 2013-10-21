@@ -20,16 +20,21 @@
         <%= render('data_function_fields', f: f) %>
       <% end %>
     <% end %>
-    <div clas="form-group actions">
+    <div>
       <%= link_to_add_fields('Add Data Function', f, :data_functions) %>
     </div>
   </div>
 
   <div class="form-inline">
     <h4>Transactional Functions</h4>
-    <%= button_tag(type: 'button', class: 'btn btn-default') do %>
-      <span class="glyphicon glyphicon-plus"></span>
+    <% @software.transactional_functions.each do |tf| %>
+      <%= f.simple_fields_for(:transactional_functions, tf) do |f| %>
+        <%= render('transactional_function_fields', f: f) %>
+      <% end %>
     <% end %>
+    <div>
+      <%= link_to_add_fields('Add Transactional Function', f, :transactional_functions) %>
+    </div>
   </div>
 
   <div class="form-group actions">

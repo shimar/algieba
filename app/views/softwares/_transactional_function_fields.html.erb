@@ -1,0 +1,18 @@
+<div class="form-inline transactional-function-form" role="form">
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+  <div class="form-group transactional-function-name">
+    <%= f.input :name, label: false, placeholder: 'transactional function name', error: false %>
+  </div>
+  <div class="form-group transactional-function-type">
+    <%= f.input :type, label: false, collection: ['Ei', 'Eo', 'Eq'], error: false %>
+  </div>
+  <div class="form-group transactional-function-det">
+    <%= f.input :det, label: false, as: :integer, placeholder: 'ret', error: false %>
+  </div>
+  <div class="form-group transactional-function-ftr">
+    <%= f.input :ftr, label: false, as: :integer, placeholder: 'ftr', error: false %>
+  </div>
+  <div class="form-group transactional-function-remove">
+    <%= link_to_remove_fields('#', f) %>
+  </div>
+</div>

@@ -2,20 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.data-function-form {
+.data-function-form,
+.transactional-function-form {
   padding: 6px 0;
   .form-group { margin-left: 0;
                 margin-right: 0; }
-  .data-function-name {
-    width: 200px;
-    .form-control { width: 200px; }
+  .data-function-name,
+  .transactional-function-name {
+    width: 240px;
+    .form-control { width: 240px; }
   }
-  .data-function-type { max-width: 200px; }
+  .data-function-type,
+  .transactional-function-type { max-width: 200px; }
   .data-function-det,
-  .data-function-ret {
+  .data-function-ret,
+  .transactional-function-det,
+  .transactional-function-ftr {
     width: 108px;
     .form-control { width: 100px;
                     text-align: right; }
   }
-  .data-function-remove { margin-left: 10px; }
+  .data-function-remove,
+  .transactional-function-remove { margin-left: 10px; }
 }
