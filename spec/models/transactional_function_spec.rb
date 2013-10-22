@@ -101,4 +101,64 @@ describe TransactionalFunction do
     end
   end
 
+  describe :complexity do
+    before(:each) do
+      @model = TransactionalFunction.new
+    end
+
+    it "returns :low when the det is less than 5 and the ftr is less than 2." do
+      @model.det = 4
+      @model.ftr = 1
+      @model.complexity.should == :low
+    end
+
+    it "returns :low when the det is less than 16 and the ftr is less than 2." do
+      @model.det = 15
+      @model.ftr = 1
+      @model.complexity.should == :low
+    end
+
+    it "returns :average when the det is greater than or equals to 16 and the ret is less than 2." do
+      @model.det = 16
+      @model.ftr = 1
+      @model.complexity.should == :average
+    end
+
+    it "returns :low when the det is less than 5 and the ftr is equals to 2." do
+      @model.det = 4
+      @model.ftr = 2
+      @model.complexity.should == :low
+    end
+
+    it "returns :average when the det is less than 16 and the ftr is equals to 2." do
+      @model.det = 15
+      @model.ftr = 2
+      @model.complexity.should == :average
+    end
+
+    it "returns :high when the det is greater than or equals to 16 and the ftr is equals to 2." do
+      @model.det = 16
+      @model.ftr = 2
+      @model.complexity.should == :high
+    end
+
+    it "returns :average when the det is less than 5 and the ftr is greater than or equals to 3." do
+      @model.det = 4
+      @model.ftr = 3
+      @model.complexity.should == :average
+    end
+
+    it "returns :high when the det is less than 16 and the ftr is greater than or equals to 3." do
+      @model.det = 15
+      @model.ftr = 3
+      @model.complexity.should == :high
+    end
+
+    it "returns :high when the det is greater than or equals to 16 and the ftr is greater than or equals to 3." do
+      @model.det = 16
+      @model.ftr = 3
+      @model.complexity.should == :high
+    end
+  end
+
 end

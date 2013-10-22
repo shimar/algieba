@@ -41,4 +41,22 @@ class TransactionalFunction < ActiveRecord::Base
   numericality: { only_integer: true,
     greater_than_or_equal_to: 0 }
 
+  def complexity
+    complexity = :low
+    if det < 5
+      complexity = :average if ftr > 2
+    elsif det < 16
+      if ftr < 2
+        complexity = :low
+      elsif ftr == 2
+        complexity = :average
+      else
+        complexity = :high
+      end
+    else
+      complexity = (ftr < 2) ? :average : :high
+    end
+    complexity
+  end
+
 end
