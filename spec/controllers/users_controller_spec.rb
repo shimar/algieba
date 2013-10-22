@@ -28,6 +28,18 @@ describe UsersController do
         assigns(:softwares).should == @user.softwares
       end
 
+      it "assigns the objects of Software includes ILFs, ELFs, EIs, EOs, and EQs." do
+        user = double(:user)
+        software = double(:software)
+        software.stub(:includes).and_return(true)
+        @controller.stub(:current_user).and_return(user)
+        user.stub(:softwares).and_return(software)
+        software.should_receive(:includes).with(:ilfs,:elfs, :eis, :eos, :eqs)
+
+        session[:user_id] = @user.id
+        get :top
+      end
+
       it "renders :top." do
         session[:user_id] = @user.id
         get :top
