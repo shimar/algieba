@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /
   def top
     @user = current_user
-    @softwares = @user.softwares.includes(:ilfs, :elfs)
+    @softwares = @user.softwares.includes(:ilfs, :elfs, :eis, :eos, :eqs)
   end
 
   # GET /users
