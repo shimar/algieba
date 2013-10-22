@@ -44,6 +44,24 @@ describe Software do
       end
     end
 
+    describe :eis do
+      it "has many of eis." do
+        @software.respond_to?(:eis).should == true
+      end
+    end
+
+    describe :eos do
+      it "has many of eos." do
+        @software.respond_to?(:eos).should == true
+      end
+    end
+
+    describe :eqs do
+      it "has many of eqs." do
+        @software.respond_to?(:eqs).should == true
+      end
+    end
+
   end
 
   describe :validations do

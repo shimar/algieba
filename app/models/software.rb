@@ -21,6 +21,9 @@ class Software < ActiveRecord::Base
   allow_destroy: true
 
   has_many :transactional_functions
+  has_many :eis
+  has_many :eos
+  has_many :eqs
 
   accepts_nested_attributes_for :transactional_functions,
   allow_destroy: true
