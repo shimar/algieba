@@ -1,7 +1,8 @@
 class SoftwaresController < ApplicationController
-  before_action :set_user,     only: [:show, :edit, :update, :destroy]
-  before_action :set_software, only: [:show, :edit, :update, :destroy]
-  before_action :set_data_functions, only: [:show, :edit]
+  before_action :set_user,                    only: [:show, :edit, :update, :destroy]
+  before_action :set_software,                only: [:show, :edit, :update, :destroy]
+  before_action :set_data_functions,          only: [:show, :edit]
+  before_action :set_transactional_functions, only: [:show, :edit]
 
   # GET /softwares
   # GET /softwares.json
@@ -76,6 +77,10 @@ class SoftwaresController < ApplicationController
 
   def set_data_functions
     @data_functions = @software.data_functions
+  end
+
+  def set_transactional_functions
+    @transactional_functions = @software.transactional_functions
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
