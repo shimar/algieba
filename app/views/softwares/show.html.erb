@@ -11,13 +11,9 @@
           <%= @software.description %>
         </p>
         <h4>Data functions</h4>
-        <p>
-          <%= render 'data_functions_table' %>
-        </p>
+        <%= render 'data_functions_table' %>
         <h4>Transactional functions</h4>
-        <p>
-          <%= render 'transactional_functions_table' %>
-        </p>
+        <%= render 'transactional_functions_table' %>
       </div>
     </div>
     <%= link_to 'Edit', edit_software_path(@software) %> |
