@@ -8,7 +8,7 @@
 #  description    :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
-#  measure_method :integer
+#  measure_method :integer          default(0)
 #
 
 class Software < ActiveRecord::Base
@@ -40,5 +40,8 @@ class Software < ActiveRecord::Base
 
   validates :description,
   length: { maximum: 255 }
+
+  validates :measure_method,
+  presence: true
 
 end

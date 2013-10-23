@@ -8,7 +8,7 @@
 #  description    :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
-#  measure_method :integer
+#  measure_method :integer          default(0)
 #
 
 require 'spec_helper'
@@ -130,6 +130,10 @@ describe Software do
         @model.errors.include?(:description).should == true
       end
 
+    end
+
+    describe :measure_method do
+      it "requires :measure_method."
     end
 
   end

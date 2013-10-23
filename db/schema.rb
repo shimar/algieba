@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023154240) do
+ActiveRecord::Schema.define(version: 20131023155300) do
 
   create_table "data_functions", force: true do |t|
     t.integer  "user_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20131023154240) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "measure_method"
+    t.integer  "measure_method", default: 0
   end
 
   create_table "transactional_functions", force: true do |t|
