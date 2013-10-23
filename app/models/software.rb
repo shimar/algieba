@@ -13,6 +13,13 @@
 
 class Software < ActiveRecord::Base
 
+  # measure_methods.
+  @@measure_methods = {
+    scratch:     0,
+    enhancement: 1,
+    application: 2,
+  }.freeze
+
   # associations.
   has_many :data_functions
   has_many :ilfs
@@ -43,5 +50,9 @@ class Software < ActiveRecord::Base
 
   validates :measure_method,
   presence: true
+
+  def self.measure_methods
+    @@measure_methods
+  end
 
 end

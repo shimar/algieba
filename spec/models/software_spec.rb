@@ -138,4 +138,14 @@ describe Software do
 
   end
 
+
+  describe :measure_methods do
+
+    it "returns the frozen hash of measure_methods." do
+      Software.measure_methods.should be_an_instance_of Hash
+      Software.measure_methods.frozen?.should == true
+    end
+
+  end
+
 end
