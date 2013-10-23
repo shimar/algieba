@@ -2,12 +2,13 @@
 #
 # Table name: softwares
 #
-#  id          :integer          not null, primary key
-#  user_id     :integer
-#  name        :string(255)
-#  description :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  name           :string(255)
+#  description    :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  measure_method :integer
 #
 
 class Software < ActiveRecord::Base
