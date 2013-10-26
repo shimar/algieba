@@ -13,6 +13,12 @@
     <%= f.input :description, required: true %>
   </div>
 
+  <div class="form-group">
+    <%= f.input(:measure_method,
+                collection: Software.measure_methods,
+                prompt: 'Select the measure method.') %>
+  </div>
+
   <div class="form-inline">
     <h4>Data Functions</h4>
     <% @software.data_functions.each do |df| %>
