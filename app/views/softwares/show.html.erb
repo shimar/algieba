@@ -10,6 +10,7 @@
         <p>
           <%= @software.description %>
         </p>
+        <%= render_measure_method(@software) %>
         <h4>Data functions</h4>
         <%= render 'data_functions_table' %>
         <h4>Transactional functions</h4>
