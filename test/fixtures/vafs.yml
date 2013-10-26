@@ -1,0 +1,62 @@
+# == Schema Information
+#
+# Table name: vafs
+#
+#  id                          :integer          not null, primary key
+#  user_id                     :integer
+#  software_id                 :integer
+#  data_communication          :integer          default(0)
+#  distributed_data_processing :integer          default(0)
+#  performance                 :integer          default(0)
+#  heavily_used_configuration  :integer          default(0)
+#  transaction_rate            :integer          default(0)
+#  online_data_entry           :integer          default(0)
+#  end_user_effeciency         :integer          default(0)
+#  online_update               :integer          default(0)
+#  complex_processing          :integer          default(0)
+#  reusability                 :integer          default(0)
+#  installation_ease           :integer          default(0)
+#  operational_ease            :integer          default(0)
+#  multiple_sites              :integer          default(0)
+#  facilitate_change           :integer          default(0)
+#  created_at                  :datetime
+#  updated_at                  :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  software_id: 1
+  data_communication: 
+  distributed_data_processing: 1
+  performance: 1
+  heavily_used_configuration: 1
+  transaction_rate: 1
+  online_data_entry: 1
+  end_user_effeciency: 1
+  online_update: 1
+  complex_processing: 1
+  reusability: 1
+  installation_ease: 1
+  operational_ease: 1
+  multiple_sites: 1
+  facilitate_change: 1
+
+two:
+  user_id: 1
+  software_id: 1
+  data_communication: 
+  distributed_data_processing: 1
+  performance: 1
+  heavily_used_configuration: 1
+  transaction_rate: 1
+  online_data_entry: 1
+  end_user_effeciency: 1
+  online_update: 1
+  complex_processing: 1
+  reusability: 1
+  installation_ease: 1
+  operational_ease: 1
+  multiple_sites: 1
+  facilitate_change: 1

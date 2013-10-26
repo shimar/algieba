@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023155300) do
+ActiveRecord::Schema.define(version: 20131026060921) do
 
   create_table "data_functions", force: true do |t|
     t.integer  "user_id"
@@ -49,6 +49,27 @@ ActiveRecord::Schema.define(version: 20131023155300) do
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vafs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "software_id"
+    t.integer  "data_communication",          default: 0
+    t.integer  "distributed_data_processing", default: 0
+    t.integer  "performance",                 default: 0
+    t.integer  "heavily_used_configuration",  default: 0
+    t.integer  "transaction_rate",            default: 0
+    t.integer  "online_data_entry",           default: 0
+    t.integer  "end_user_effeciency",         default: 0
+    t.integer  "online_update",               default: 0
+    t.integer  "complex_processing",          default: 0
+    t.integer  "reusability",                 default: 0
+    t.integer  "installation_ease",           default: 0
+    t.integer  "operational_ease",            default: 0
+    t.integer  "multiple_sites",              default: 0
+    t.integer  "facilitate_change",           default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
