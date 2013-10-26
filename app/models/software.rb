@@ -49,7 +49,8 @@ class Software < ActiveRecord::Base
   length: { maximum: 255 }
 
   validates :measure_method,
-  presence: true
+  presence: true,
+  inclusion: { in: @@measure_methods.values }
 
   def self.measure_methods
     @@measure_methods

@@ -133,7 +133,29 @@ describe Software do
     end
 
     describe :measure_method do
-      it "requires :measure_method."
+      it "requires :measure_method." do
+        @model.measure_method = nil
+        @model.valid?.should == false
+        @model.errors.include?(:measure_method).should == true
+      end
+
+      it "should be 0 as default." do
+        @model.valid?.should == false
+        @model.measure_method.should == 0
+        @model.errors.include?(:measure_method).should == nil
+      end
+
+      it "should be in values of @@measure_methods." do
+        Software.measure_methods.each do |k, v|
+          @model.measure_method = v
+          @model.valid?.should == false
+          @model.errors.include?(:measure_method).should == nil
+        end
+        @model.measure_method = 3
+        @model.valid?.should == false
+        @model.errors.include?(:measure_method).should == true
+      end
+
     end
 
   end
