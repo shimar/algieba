@@ -88,6 +88,7 @@ class SoftwaresController < ApplicationController
     params.require(:software)
       .permit(:name,
               :description,
+              :measure_method,
               data_functions_attributes: [
                 :id,
                 :user_id,
