@@ -217,4 +217,11 @@ describe Vaf do
 
   end
 
+  describe :total_degree_of_influences do
+    it "returns sum of each factor." do
+      vaf = FactoryGirl.build(:vaf)
+      vaf.total_degree_of_influences.should == 14
+    end
+  end
+
 end

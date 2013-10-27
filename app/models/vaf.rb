@@ -88,6 +88,26 @@ class Vaf < ActiveRecord::Base
   validates :facilitate_change,
   inclusion: { in: @@degree_of_influences.values }
 
+  def total_degree_of_influences
+    tdi = 0
+    [data_communication,
+      distributed_data_processing,
+      performance,
+      heavily_used_configuration,
+      transaction_rate,
+      online_data_entry,
+      end_user_effeciency,
+      online_update,
+      complex_processing,
+      reusability,
+      installation_ease,
+      operational_ease,
+      multiple_sites,
+      facilitate_change].each { |e| tdi += e }
+    return tdi
+  end
+  alias_method :tdi, :total_degree_of_influences
+
   def self.degree_of_influences
     @@degree_of_influences
   end
