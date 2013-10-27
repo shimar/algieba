@@ -1,6 +1,10 @@
 <% if @transactional_functions.empty? %>
   <table class="table">
-    <tr><td>No transactional functions.</td></tr>
+    <tr>
+      <td class="text-warning">
+        <span class="glyphicon glyphicon-warning-sign"></span> No transactional functions.
+      </td>
+    </tr>
   </table>
 <% else %>
   <table class="table">
