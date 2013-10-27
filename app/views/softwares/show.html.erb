@@ -2,19 +2,30 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">
+        <h1 class="panel-title">
           <%= @software.name %>
-        </h3>
+        </h1>
       </div>
       <div class="panel-body">
         <p>
           <%= @software.description %>
+          <%= render_measure_method(@software) %>
         </p>
-        <%= render_measure_method(@software) %>
-        <h4>Data functions</h4>
-        <%= render 'data_functions_table' %>
-        <h4>Transactional functions</h4>
-        <%= render 'transactional_functions_table' %>
+        <div class="row">
+          <%= render 'function_points_table' %>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <h4>Data functions</h4>
+            <%= render 'data_functions_table' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <h4>Transactional functions</h4>
+            <%= render 'transactional_functions_table' %>
+          </div>
+        </div>
       </div>
     </div>
     <%= link_to 'Edit', edit_software_path(@software) %> |
