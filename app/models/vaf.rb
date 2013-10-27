@@ -25,7 +25,71 @@
 
 class Vaf < ActiveRecord::Base
 
+  # this values based on a pdf following:
+  #   https://cs.uwaterloo.ca/~apidduck/CS846/Seminars/abbas.pdf
+  @@degree_of_influences = {
+    no_influence: 0,
+    incidental:   1,
+    moderate:     2,
+    average:      3,
+    significant:  4,
+    essential:    5,
+  }.freeze
+
   # associations.
   belongs_to :software
+
+  # validations.
+  validates :user_id,
+  presence: true
+
+  validates :software_id,
+  presence: true
+
+  validates :data_communication,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :distributed_data_processing,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :performance,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :heavily_used_configuration,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :transaction_rate,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :online_data_entry,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :end_user_effeciency,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :online_update,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :complex_processing,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :reusability,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :installation_ease,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :operational_ease,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :multiple_sites,
+  inclusion: { in: @@degree_of_influences.values }
+
+  validates :facilitate_change,
+  inclusion: { in: @@degree_of_influences.values }
+
+  def self.degree_of_influences
+    @@degree_of_influences
+  end
 
 end
