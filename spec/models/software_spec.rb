@@ -166,6 +166,53 @@ describe Software do
 
   end
 
+  describe :data_function_points do
+    before(:each) do
+      @model = FactoryGirl.build(:software)
+    end
+    it "returns 0.0 when the software has no data_functions." do
+      @model.data_function_points.should == 0
+    end
+    it "returns sum of the function points of ilfs and elfs." do
+      ilf = @model.ilfs.build
+      ilf.stub(:function_point).and_return 1
+      elf = @model.elfs.build
+      elf.stub(:function_point).and_return 2
+      @model.data_function_points.should == 3
+    end
+  end
+
+  describe :transactional_function_points do
+    before(:each) do
+      @model = FactoryGirl.build(:software)
+    end
+    it "returns 0.0 when the software has no transactional_functions." do
+      @model.transactional_function_points.should == 0
+    end
+    it "returns sum of the function points of eis, eos, and eqs." do
+      ei = @model.eis.build
+      ei.stub(:function_point).and_return 1
+      eo = @model.eos.build
+      eo.stub(:function_point).and_return 2
+      eq = @model.eqs.build
+      eq.stub(:function_point).and_return 3
+      @model.transactional_function_points.should == 6
+    end
+  end
+
+  describe :unadjusted_function_points do
+    before(:each) do
+      @model = FactoryGirl.build :software
+    end
+    it "returns 0 when the software has no data_functions and transactional_functions." do
+      @model.unadjusted_function_points.should == 0
+    end
+    it "returns sum of data function points and transactional function points." do
+      @model.stub(:data_function_points).and_return 3
+      @model.stub(:transactional_function_points).and_return 5
+      @model.unadjusted_function_points.should == 8
+    end
+  end
 
   describe :measure_methods do
 

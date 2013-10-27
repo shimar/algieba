@@ -55,6 +55,27 @@ class Software < ActiveRecord::Base
   presence: true,
   inclusion: { in: @@measure_methods.values }
 
+  def data_function_points
+    fp = 0
+    [:ilfs, :elfs].each do |association|
+      send(association).each { |a| fp += a.function_point }
+    end
+    return fp
+  end
+
+  def transactional_function_points
+    fp = 0
+    [:eis, :eos, :eqs].each do |association|
+      send(association).each { |a| fp += a.function_point }
+    end
+    return fp
+  end
+
+  def unadjusted_function_points
+    return data_function_points + transactional_function_points
+  end
+  alias_method :ufp, :unadjusted_function_points
+
   def self.measure_methods
     @@measure_methods
   end
