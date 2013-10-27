@@ -63,6 +63,12 @@ describe Software do
       end
     end
 
+    describe :vaf do
+      it "has one of vaf." do
+        @software.respond_to?(:vaf).should == true
+      end
+    end
+
   end
 
   describe :validations do

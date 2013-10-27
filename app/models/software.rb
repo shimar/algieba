@@ -36,6 +36,9 @@ class Software < ActiveRecord::Base
   accepts_nested_attributes_for :transactional_functions,
   allow_destroy: true
 
+  has_one :vaf
+  accepts_nested_attributes_for :vaf
+
   # validations.
   validates :user_id,
   presence: true

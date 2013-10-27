@@ -24,4 +24,8 @@
 #
 
 class Vaf < ActiveRecord::Base
+
+  # associations.
+  belongs_to :software
+
 end
