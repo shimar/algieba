@@ -1,0 +1,75 @@
+<%= f.simple_fields_for(:vaf, @vaf) do |f| %>
+  <%= f.input :user_id, as: :hidden %>
+  <%= f.input :software_id, as: :hidden %>
+
+  <div class="form-group">
+    <%= f.input(:data_communication,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:distributed_data_processing,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:performance,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:heavily_used_configuration,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:transaction_rate,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:online_data_entry,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:end_user_effeciency,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:online_update,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:complex_processing,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:reusability,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:installation_ease,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:operational_ease,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:multiple_sites,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input(:facilitate_change,
+                collection: Vaf.degree_of_influences) %>
+  </div>
+
+<% end %>
