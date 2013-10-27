@@ -55,6 +55,14 @@ class Software < ActiveRecord::Base
   presence: true,
   inclusion: { in: @@measure_methods.values }
 
+  def vaf_score
+    tdi = 0
+    if vaf
+      tdi = vaf.tdi
+    end
+    return (tdi * 0.01) + 0.65
+  end
+
   def data_function_points
     fp = 0
     [:ilfs, :elfs].each do |association|

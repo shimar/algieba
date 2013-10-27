@@ -166,6 +166,19 @@ describe Software do
 
   end
 
+  describe :vaf_score do
+    it "returns 0 when the software has no vaf." do
+      Software.new.vaf_score.should == 0.65
+    end
+
+    it "returns the tdi of vaf when the software has a vaf." do
+      @software = FactoryGirl.build(:software) do |software|
+        software.build_vaf(attributes_for :vaf)
+      end
+      @software.vaf_score.should == (14 * 0.01) + 0.65
+    end
+  end
+
   describe :data_function_points do
     before(:each) do
       @model = FactoryGirl.build(:software)
