@@ -26,6 +26,13 @@ describe SoftwaresController do
         assigns(:software).user_id.should == user.id
       end
 
+      it "assings new instance of Vaf associated assigned software." do
+        user = FactoryGirl.create(:user)
+        get :new, {}, { user_id: user.id }
+        assigns(:vaf).should be_a_new Vaf
+        assigns(:vaf).user_id.should == user.id
+      end
+
       it "renders 'new.html.erb'." do
         user = FactoryGirl.create(:user)
         get :new, {}, { user_id: user.id }

@@ -1,6 +1,7 @@
 class SoftwaresController < ApplicationController
   before_action :set_user,                    only: [:show, :edit, :update, :destroy]
   before_action :set_software,                only: [:show, :edit, :update, :destroy]
+  before_action :set_vaf,                     only: [:show, :edit]
   before_action :set_data_functions,          only: [:show, :edit]
   before_action :set_transactional_functions, only: [:show, :edit]
 
@@ -18,6 +19,7 @@ class SoftwaresController < ApplicationController
   # GET /softwares/new
   def new
     @software = current_user.softwares.build
+    @vaf = @software.build_vaf(user_id: @software.user_id)
   end
 
   # GET /softwares/1/edit
@@ -75,6 +77,13 @@ class SoftwaresController < ApplicationController
     @software = @user.softwares.includes(:ilfs, :elfs).find(params[:id])
   end
 
+  def set_vaf
+    @vaf = @software.vaf
+    if @vaf.nil?
+      @vaf = @software.build_vaf(user_id: @user.id)
+    end
+  end
+
   def set_data_functions
     @data_functions = @software.data_functions
   end
@@ -89,6 +98,25 @@ class SoftwaresController < ApplicationController
       .permit(:name,
               :description,
               :measure_method,
+              vaf_attributes: [
+                :id,
+                :user_id,
+                :software_id,
+                :data_communication,
+                :distributed_data_processing,
+                :performance,
+                :heavily_used_configuration,
+                :transaction_rate,
+                :online_data_entry,
+                :end_user_effeciency,
+                :online_update,
+                :complex_processing,
+                :reusability,
+                :installation_ease,
+                :operational_ease,
+                :multiple_sites,
+                :facilitate_change,
+              ],
               data_functions_attributes: [
                 :id,
                 :user_id,
