@@ -2,21 +2,39 @@
   <div class="panel-heading clearfix">
     <div class="pull-left">
       <%= link_to software do %>
-        <h3 class="panel-title">
+        <p class="panel-title">
           <%= software.name %>
-        </h3>
+        </p>
       <% end %>
     </div>
-    <div class="pull-right">
-      <%= link_to edit_software_url software do %>
-        <span class="glyphicon glyphicon-edit"></span>
-      <% end %>
-      <%= link_to software, method: :delete do %>
-        <span class="glyphicon glyphicon-trash"></span>
-      <% end %>
+    <div class="pull-right text-muted">
+      <%= software.updated_at %>
     </div>
   </div>
   <div class="panel-body">
-    <%= software.description %>
+    <p>
+      <%= software.description %>
+    </p>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-2">
+          <p class="text-right">
+            <strong><%= software.ufp.to_f %> ufp</strong>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <p class="text-right">
+            <strong><%= software.vaf_score.to_f %> vaf</strong>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <p class="text-right">
+            <strong><%= software.fp.to_f %> fp</strong>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
