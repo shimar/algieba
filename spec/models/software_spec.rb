@@ -166,6 +166,18 @@ describe Software do
 
   end
 
+  describe :function_points do
+    it "returns the product ufp and vaf_score." do
+      software = Software.new
+      software.stub(:ufp).and_return 0
+      software.stub(:vaf_score).and_return 0
+      software.function_points.should == 0
+      software.stub(:ufp).and_return 1
+      software.stub(:vaf_score).and_return 2
+      software.function_points.should == 2
+    end
+  end
+
   describe :vaf_score do
     it "returns 0 when the software has no vaf." do
       Software.new.vaf_score.should == 0.65

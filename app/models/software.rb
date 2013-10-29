@@ -55,6 +55,11 @@ class Software < ActiveRecord::Base
   presence: true,
   inclusion: { in: @@measure_methods.values }
 
+  def function_points
+    return ufp * vaf_score
+  end
+  alias_method :fp, :function_points
+
   def vaf_score
     tdi = 0
     if vaf
