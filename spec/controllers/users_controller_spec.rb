@@ -77,6 +77,27 @@ describe UsersController do
   end
 
   describe :edit do
+
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+    end
+
+    it "assigns current user object to @user." do
+      get :edit, {id: '1'}, {user_id: '1'}
+      assigns(:user).should == @user
+    end
+
+    it "renders 'edit.html.erb'." do
+      get :edit, {id: '1'}, {user_id: '1'}
+      expect(response).to render_template(:edit)
+    end
+
+    it "returns 200 as http status." do
+      get :new
+      expect(response).to be_success
+      expect(response.status).to eq(200)
+    end
+
   end
 
   describe :create do
@@ -148,9 +169,11 @@ describe UsersController do
   end
 
   describe :update do
+    pending
   end
 
   describe :destroy do
+    pending
   end
 
 end
