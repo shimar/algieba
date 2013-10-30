@@ -19,7 +19,11 @@
   
   <div class="form-group actions">
     <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
-      <span class="glyphicon glyphicon-ok"></span> Sign Up
+      <% if @user.new_record? %>
+        <span class="glyphicon glyphicon-ok"></span> Sing Up
+      <% else %>
+        Save
+      <% end %>    
     <% end %>
     <%= link_to('Back', root_url, class: 'btn btn-default') %>
   </div>
