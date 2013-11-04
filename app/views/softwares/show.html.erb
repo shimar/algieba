@@ -26,9 +26,13 @@
             <%= render 'transactional_functions_table' %>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 text-right">
+            <%= link_to 'Edit', edit_software_path(@software), class: 'btn btn-default' %>
+            <%= link_to 'Back', root_url, class: 'btn btn-default' %>
+          </div>
+        </div>
       </div>
     </div>
-    <%= link_to 'Edit', edit_software_path(@software) %> |
-    <%= link_to 'Back', root_url %>
   </div>
 </div>
