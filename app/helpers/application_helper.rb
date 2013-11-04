@@ -1,7 +1,7 @@
 module ApplicationHelper
 
-  def submit_caption(model)
-    creation = 'Create'
+  def submit_caption(model, default = 'Create')
+    creation = default
     updating = 'Update'
     caption  = creation
     unless model.nil?
