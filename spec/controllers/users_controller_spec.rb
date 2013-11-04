@@ -143,7 +143,7 @@ describe UsersController do
         }.should change(User, :count).by(1)
       end
 
-      it "redirects to user_softwares_url with the id of user created." do
+      it "redirects to root_url." do
         user_params = {
           email:              'test@test.com',
           email_confirmation: 'test@test.com',
@@ -151,7 +151,7 @@ describe UsersController do
           password_confirmation: 'password'
         }
         post :create, { user: user_params }
-        expect(response).to redirect_to(user_softwares_url(assigns(:user)))
+        expect(response).to redirect_to(root_url)
       end
 
       it "fills the sesssion[:user_id] with the id of user created." do

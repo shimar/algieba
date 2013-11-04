@@ -2,16 +2,91 @@ require 'spec_helper'
 
 describe "Session" do
 
-  describe "GET /" do
+  describe "Sing up" do
+    describe "when a user clicks the button of 'Sign up for algieba now!'," do
+      it "display the signup form." do
+        visit root_path
+        click_link 'signup-button'
+        expect(page).to have_content 'Sing Up'
+      end
+    end
 
-    it "redirects /welcome." do
+    describe "when a user click the back button," do
+      it "display the welcome page." do
+        visit root_path
+        click_link 'signup-button'
+        click_link 'Back'
+        expect(page).to have_content 'Calculate software function points.'
+      end
+    end
+
+    describe "when a user click the signup button with no inputs," do
+      before(:each) do
+        visit root_path
+        click_link 'signup-button'
+        click_button 'signup-button'
+      end
+      it "display the signup form again." do
+        expect(page).to have_content 'Sign Up'
+      end
+
+      it "display the email field with error message." do
+        find('div.user_email span.text-danger').should have_content("can't be blank")
+      end
+      it "display the password field with error message." do
+        find('div.user_password span.text-danger').should have_content("can't be blank")
+      end
+      it "display the password confirmation field with error message." do
+        find('div.user_password_confirmation span.text-danger').should have_content("doesn't match Password")
+      end
+    end
+  end
+
+  describe "when a user fills the form that email has been used by other, and clicks the signin button," do
+    before(:each) do
+      FactoryGirl.create(:user)
       visit root_path
-      expect(page).to have_content 'Calculate software function points.'
+      click_link 'signup-button'
+    end
+
+    it "display the signup form again." do
+      fill_in 'user_email', with: 'test@test.com'
+      fill_in 'user_email_confirmation', with: 'test@test.com'
+      fill_in 'user_password', with: 'password'
+      fill_in 'user_password_confirmation', with: 'password'
+      click_button 'signup-button'
+      expect(page).to have_content('Sign Up')
+    end
+
+    it "display the email field with error message." do
+      fill_in 'user_email', with: 'test@test.com'
+      fill_in 'user_email_confirmation', with: 'test@test.com'
+      fill_in 'user_password', with: 'password'
+      fill_in 'user_password_confirmation', with: 'password'
+      click_button 'signup-button'
+      find('div.user_email span.text-danger').should have_content('has already been taken')
     end
 
   end
 
-  describe "Sign in", js: true do
+  describe "when a user fills the form and clicks the signin button," do
+    before(:each) do
+      visit root_path
+      click_link 'signup-button'
+      click_button 'signup-button'
+    end
+
+    it "display the list of software page." do
+      fill_in 'user_email', with: 'john@test.com'
+      fill_in 'user_email_confirmation', with: 'john@test.com'
+      fill_in 'user_password', with: 'password'
+      fill_in 'user_password_confirmation', with: 'password'
+      click_button 'signup-button'
+      expect(page).to have_content "john@test.com's softwares."
+    end
+  end
+
+  describe "Sign in" do
 
     describe "when user clicks the signin button with no email address," do
       it "display the email field with error message." do
