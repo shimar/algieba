@@ -47,45 +47,59 @@ class Vaf < ActiveRecord::Base
   presence: true
 
   validates :data_communication,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :distributed_data_processing,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :performance,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :heavily_used_configuration,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :transaction_rate,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :online_data_entry,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :end_user_effeciency,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :online_update,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :complex_processing,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :reusability,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :installation_ease,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :operational_ease,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :multiple_sites,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   validates :facilitate_change,
+  presence: true,
   inclusion: { in: @@degree_of_influences.values }
 
   def total_degree_of_influences
