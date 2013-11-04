@@ -57,6 +57,7 @@ group :developement, :test do
   gem 'simplecov'
   gem 'factory_girl_rails'
   gem 'spring'
+  gem 'database_cleaner'
 end
 
 group :development, :test do
