@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <%= link_to '#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do %>
+          <%= link_to '#', id: 'menu-block', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do %>
             <span class="glyphicon glyphicon-user"></span>
             <b class="caret"></b>
           <% end %>
@@ -17,7 +17,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to signout_url, method: :delete do %>
+              <%= link_to signout_url, id: 'signout-link', method: :delete do %>
                 <span class="glyphicon glyphicon-off"></span> sign out
               <% end %>
             </li>

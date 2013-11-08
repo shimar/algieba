@@ -7,7 +7,7 @@ describe "Session" do
       it "display the signup form." do
         visit root_path
         click_link 'signup-button'
-        expect(page).to have_content 'Sing Up'
+        expect(page).to have_content 'Sign Up'
       end
     end
 
@@ -40,49 +40,48 @@ describe "Session" do
         find('div.user_password_confirmation span.text-danger').should have_content("doesn't match Password")
       end
     end
-  end
+    describe "when a user fills the form that email has been used by other, and clicks the signin button," do
+      before(:each) do
+        FactoryGirl.create(:user)
+        visit root_path
+        click_link 'signup-button'
+      end
 
-  describe "when a user fills the form that email has been used by other, and clicks the signin button," do
-    before(:each) do
-      FactoryGirl.create(:user)
-      visit root_path
-      click_link 'signup-button'
+      it "display the signup form again." do
+        fill_in 'user_email', with: 'test@test.com'
+        fill_in 'user_email_confirmation', with: 'test@test.com'
+        fill_in 'user_password', with: 'password'
+        fill_in 'user_password_confirmation', with: 'password'
+        click_button 'signup-button'
+        expect(page).to have_content('Sign Up')
+      end
+
+      it "display the email field with error message." do
+        fill_in 'user_email', with: 'test@test.com'
+        fill_in 'user_email_confirmation', with: 'test@test.com'
+        fill_in 'user_password', with: 'password'
+        fill_in 'user_password_confirmation', with: 'password'
+        click_button 'signup-button'
+        find('div.user_email span.text-danger').should have_content('has already been taken')
+      end
+
     end
 
-    it "display the signup form again." do
-      fill_in 'user_email', with: 'test@test.com'
-      fill_in 'user_email_confirmation', with: 'test@test.com'
-      fill_in 'user_password', with: 'password'
-      fill_in 'user_password_confirmation', with: 'password'
-      click_button 'signup-button'
-      expect(page).to have_content('Sign Up')
-    end
+    describe "when a user fills the form and clicks the signin button," do
+      before(:each) do
+        visit root_path
+        click_link 'signup-button'
+        click_button 'signup-button'
+      end
 
-    it "display the email field with error message." do
-      fill_in 'user_email', with: 'test@test.com'
-      fill_in 'user_email_confirmation', with: 'test@test.com'
-      fill_in 'user_password', with: 'password'
-      fill_in 'user_password_confirmation', with: 'password'
-      click_button 'signup-button'
-      find('div.user_email span.text-danger').should have_content('has already been taken')
-    end
-
-  end
-
-  describe "when a user fills the form and clicks the signin button," do
-    before(:each) do
-      visit root_path
-      click_link 'signup-button'
-      click_button 'signup-button'
-    end
-
-    it "display the list of software page." do
-      fill_in 'user_email', with: 'john@test.com'
-      fill_in 'user_email_confirmation', with: 'john@test.com'
-      fill_in 'user_password', with: 'password'
-      fill_in 'user_password_confirmation', with: 'password'
-      click_button 'signup-button'
-      expect(page).to have_content "john@test.com's softwares."
+      it "display the list of software page." do
+        fill_in 'user_email', with: 'john@test.com'
+        fill_in 'user_email_confirmation', with: 'john@test.com'
+        fill_in 'user_password', with: 'password'
+        fill_in 'user_password_confirmation', with: 'password'
+        click_button 'signup-button'
+        expect(page).to have_content "john@test.com's softwares."
+      end
     end
   end
 
@@ -136,6 +135,24 @@ describe "Session" do
         fill_in 'Password', with: 'password'
         click_button 'signin-button'
         expect(page).to have_content "test@test.com's softwares."
+      end
+    end
+  end
+
+  describe "Sign out", js: true do
+    describe "when user who signed in clicks the sign out link," do
+      before(:each) do
+        FactoryGirl.create(:user)
+      end
+      it "display the welcome page." do
+        visit root_path
+        fill_in 'Email', with: 'test@test.com'
+        fill_in 'Password', with: 'password'
+        click_button('signin-button')
+        expect(page).to have_content "test@test.com's softwares."
+        click_link('menu-block')
+        click_link('signout-link')
+        expect(page).to have_content "Sign up for Algieba Now!"
       end
     end
   end
