@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Session" do
 
-  describe "Sing up" do
+  describe "Sign up" do
     describe "when a user clicks the button of 'Sign up for algieba now!'," do
       it "display the signup form." do
         visit root_path
