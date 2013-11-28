@@ -40,6 +40,7 @@ gem 'anjlab-bootstrap-rails',
 :github => 'anjlab/bootstrap-rails'
 
 gem 'simple_form'
+gem 'kaminari'
 
 # Use unicorn as the app server
 # gem 'unicorn'
