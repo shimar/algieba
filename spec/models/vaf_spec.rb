@@ -52,12 +52,14 @@ describe Vaf do
     end
 
     describe :software_id do
-      it "requires :software_id." do
-        @model.valid?
-        @model.errors.include?(:software_id).should == true
-        @model.software_id = 1
+      it "requires :software_id on update." do
         @model.valid?
         @model.errors.include?(:software_id).should == nil
+
+        @vaf = FactoryGirl.create(:vaf)
+        @vaf.software_id = nil
+        @vaf.valid?
+        @vaf.errors.include?(:software_id).should == true
       end
     end
 

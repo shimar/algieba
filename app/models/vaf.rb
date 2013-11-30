@@ -44,7 +44,8 @@ class Vaf < ActiveRecord::Base
   presence: true
 
   validates :software_id,
-  presence: true
+  presence: true,
+  on: :update
 
   validates :data_communication,
   presence: true,
