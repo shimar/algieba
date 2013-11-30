@@ -39,6 +39,9 @@ class Software < ActiveRecord::Base
   has_one :vaf
   accepts_nested_attributes_for :vaf
 
+  # scopes
+  scope :with_data_and_transactional_functions, -> { includes(:ilfs, :elfs, :eis, :eos, :eqs) }
+
   # validations.
   validates :user_id,
   presence: true

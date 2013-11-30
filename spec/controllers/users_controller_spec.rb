@@ -25,18 +25,19 @@ describe UsersController do
       it "assings the objects of Software owned by @user." do
         session[:user_id] = @user.id
         get :top
-        assigns(:softwares).should == @user.softwares.page(1)
+        assigns(:softwares).should == @user.softwares
       end
 
       it "assigns the objects of Software includes ILFs, ELFs, EIs, EOs, and EQs." do
         user = double(:user)
         software = double(:software)
         softwares = double(:softwares)
+        software.stub(:with_data_and_transactional_functions).and_return(softwares)
+        softwares.stub(:size).and_return(1)
         softwares.stub(:page).and_return(true)
-        software.stub(:includes).and_return(softwares)
         @controller.stub(:current_user).and_return(user)
         user.stub(:softwares).and_return(software)
-        software.should_receive(:includes).with(:ilfs,:elfs, :eis, :eos, :eqs)
+        software.should_receive(:with_data_and_transactional_functions)
         softwares.should_receive(:page)
 
         session[:user_id] = @user.id

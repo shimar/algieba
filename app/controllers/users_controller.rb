@@ -5,9 +5,8 @@ class UsersController < ApplicationController
   # GET /
   def top
     @user = current_user
-    @softwares = @user.softwares
-      .includes(:ilfs, :elfs, :eis, :eos, :eqs)
-      .page(params[:page])
+    @softwares = @user.softwares.with_data_and_transactional_functions
+    @softwares = @softwares.page(params[:page]) if @softwares.size > 0
   end
 
   # GET /users
