@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   # GET /
   def top
     @user = current_user
-    @softwares = @user.softwares.includes(:ilfs, :elfs, :eis, :eos, :eqs)
+    @softwares = @user.softwares
+      .includes(:ilfs, :elfs, :eis, :eos, :eqs)
+      .page(params[:page])
   end
 
   # GET /users

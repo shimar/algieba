@@ -11,6 +11,7 @@
           <% @softwares.each do |software| %>
             <%= render(partial: 'softwares/software', locals: { software: software}) %>
           <% end %>
+          <%= paginate @softwares %>
         <% end %>
       </div>
     </div>
@@ -24,3 +25,4 @@
     <% end %>
   </div>
 </div>
+
